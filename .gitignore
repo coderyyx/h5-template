@@ -1,0 +1,39 @@
+# Android generated
+# bin/
+gen/
+classes/
+gen-external-apklibs/
+
+# Ant
+local.properties
+
+# Maven
+target/
+release.properties
+
+# Eclipse
+.classpath
+.project
+.externalToolBuilders/
+.metadata
+.settings
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+out/
+
+#logs
+logs/
+# Mac
+.DS_Store
+
+#node
+.vscode/
+node_modules/
+dist/
+package-lock.json
+.history/
+yarn-error.log

@@ -1,0 +1,37 @@
+{
+  "parser": "babel-eslint",
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["react", "flowtype"],
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "module": true,
+    "require": true,
+    "process": true
+  },
+  "rules": {
+    "no-console": "off",
+    "no-unused-vars": 2,
+    "no-mixed-operators": "off",
+    "no-extend-native": "off",
+    "comma-dangle": "off",
+    "camelcase": "off",
+    "no-empty-pattern": "off",
+    "react/prop-types": 2,
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error"
+  },
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": true
+    }
+  }
+}
