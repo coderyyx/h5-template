@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=development BABEL_ENV=development node ./build/server.js",
-    "bundle": "cross-env NODE_ENV=production BABEL_ENV=production node ./build/bundle.js"
+    "build": "cross-env NODE_ENV=production BABEL_ENV=production node ./build/bundle.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -61,6 +61,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
     "progress-bar-webpack-plugin": "^1.11.0",
+    "rc-form": "^2.4.2",
     "react": "16.5.1",
     "react-dom": "16.5.1",
     "react-hot-loader": "^4.6.3",
