@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PageWarp from 'toolComponents'
 import Header from './components/header'
 import Nav from './components/nav'
@@ -13,12 +13,12 @@ class Home extends Component {
     render () {
         console.log('home render=>')
         return (
-            <PageWarp>
+            <Fragment>
                 <Header/>
                 <Nav/>
                 <Posts/>
-                <LessonList/>
-            </PageWarp>
+                <LessonList history={this.props.history}/>
+            </Fragment>
         )  
     }
 }

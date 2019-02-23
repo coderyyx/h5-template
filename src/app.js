@@ -66,7 +66,7 @@ export default class TabBarExample extends React.Component {
             }}
             data-seed="logId"
           >
-            <Home/>
+            <Home {...this.props}/>
           </TabBar.Item>
           <TabBar.Item
             icon={

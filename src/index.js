@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app';
+import Routes from './router';
 import './theme/theme.less';
 
 ReactDOM.render(
-  <App/>,
+  <Routes/>,
   document.getElementById('root')
 );
 

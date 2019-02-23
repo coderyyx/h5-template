@@ -40,9 +40,12 @@ class LessonList extends Component {
             }
         ]
     }
+    lessonClick = (...args) => {
+        this.props.history.push('/lessonDetails');
+    }
     renderLesson() {
         return this.state.LessonList && this.state.LessonList.map(({_url, title, subtitle, price, numbers}) => {
-            return <li className="lesson_list" key={title}>
+            return <li className="lesson_list" key={title} onClick = {() => this.lessonClick(price)}>
                 <a className="package">
                     <div className="package__cover-wrap">
                         <div className="package__cover" style={{backgroundImage:`url(${_url})`}}>

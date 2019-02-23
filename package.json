@@ -65,6 +65,7 @@
     "react-dom": "16.5.1",
     "react-hot-loader": "^4.6.3",
     "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
     "redux-thunk": "^2.3.0",
     "sass-loader": "^6.0.6",
     "shelljs": "^0.8.3",
