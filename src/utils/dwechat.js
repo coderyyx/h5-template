@@ -7,9 +7,23 @@ const redirect_uri = Config.redirect_uri;
 const appId = Config.appId;  //wx1c1fa5d121654c89
 
 let dwechat = {
+    obj2QueryString: function (obj) {
+        let keys = Object.keys(obj);
+        let result = '';
+        if (!keys.length) {
+            return result;
+        }
+        keys.forEach(fields => {
+            result += `${fields}=${encodeURIComponent(obj[fields])}&`
+        })
+        return result.substring(0, result.length - 1);
+    },
     Params : function(){
         // let params = location.search.slice(1);
-        let params = location.hash.split('?')[1];
+        console.log('Params location====>');
+        console.log(location)
+        let params = location.search.split('?')[1];
+        console.log(`params=====>${params}`)
         let result = {}
         if(params){
             let temp;
@@ -66,6 +80,8 @@ let dwechat = {
     },
     isUserLogin : function(){
         let param = dwechat.Params;
+        console.log('params=======>');
+        console.log(param)
         return new Promise(function(resolve,reject){
             dtop.request({
                 api : "register/isLoginValid",
@@ -77,7 +93,7 @@ let dwechat = {
                     console.log(data)
                     let online = data.online;
                     if(online == 1){ //已登录
-                        resolve();
+                        resolve(data.weixin_json);
                     }
                     else if(online == 2){//弹出注册
                         reject({
@@ -92,7 +108,6 @@ let dwechat = {
                         });
                     }
                     else if(online == 0){//授权
-                        alert(JSON.stringify(data))
                         // var url = location.href.split('#')[0];
                         location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ appId +'&redirect_uri='+ encodeURIComponent(redirect_uri) +'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
                         return false;

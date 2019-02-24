@@ -4,6 +4,7 @@ const config = {
     hostname : 'm.besthinghr.com', 
     apiurl : 'http://mob.besthinghr.com/',
     testapiurl : 'http://mob.besthinghr.com/',
+    // testapiurl : 'http://m.besthinghr.com/',
     redirect_uri: 'http://m.besthinghr.com/dist/',
 }
 

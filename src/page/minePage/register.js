@@ -1,3 +1,4 @@
+import React from 'react';
 import { List, InputItem, WhiteSpace } from 'antd-mobile';
 import { createForm } from 'rc-form';
 

@@ -103,7 +103,8 @@ let webpackConfig = {
         sourceMap: false,
         uglifyOptions: {
           compress: {
-            drop_console: isProd ? 'drop_console' : false
+            // drop_console: isProd ? 'drop_console' : false
+            drop_console: false
           }
         }
       }),

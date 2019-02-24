@@ -1,8 +1,8 @@
 import {Db} from './index';
+export {toast} from 'react-mobile-message';
 const setTimeout = window.setTimeout
 
 const {NODE_ENV, isProd} = process.env
-
 export const noop = () => {}
 export {isProd}
 // polling
@@ -81,7 +81,7 @@ export async function asyncImportModule(moduleName) {
   let _module = null;
   switch (moduleName) {
     case 'moment':
-      _module = await import('moment');
+      // _module = await import('moment');
       break;
     default:
       break;

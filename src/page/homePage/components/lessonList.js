@@ -41,7 +41,7 @@ class LessonList extends Component {
         ]
     }
     lessonClick = (...args) => {
-        this.props.history.push('/lessonDetails', {id: args});
+        this.props.history.push('/lessonDetails');
     }
     renderLesson() {
         return this.state.LessonList && this.state.LessonList.map(({_url, title, subtitle, price, numbers}) => {
