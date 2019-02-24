@@ -1,6 +1,7 @@
 import React from 'react';
 import { TabBar } from 'antd-mobile';
 import Home from 'page/homePage/index';
+// import Mine from 'page/minePage';
 
 export default class TabBarExample extends React.Component {
   constructor(props) {
@@ -135,7 +136,7 @@ export default class TabBarExample extends React.Component {
               });
             }}
           >
-            {this.renderContent('My')}
+            {/* <Mine/> */}
           </TabBar.Item>
         </TabBar>
       </div>
