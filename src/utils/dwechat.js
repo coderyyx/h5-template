@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import sha1 from "./sha1.js";
 import dtop from "./dtop.js";
 import wx from "weixin-js-sdk";
@@ -8,7 +7,8 @@ import Config from './info.js';
 const appId = Config.appId;  //wx1c1fa5d121654c89
 let dwechat = {
     Params : function(){
-        let params = location.search.slice(1);
+        // let params = location.search.slice(1);
+        let params = location.hash.split('?')[1];
         let result = {}
         if(params){
             let temp;

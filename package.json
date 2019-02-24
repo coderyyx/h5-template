@@ -65,8 +65,10 @@
     "react": "16.5.1",
     "react-dom": "16.5.1",
     "react-hot-loader": "^4.6.3",
+    "react-mobile-message": "^2.1.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
+    "react-transition-group": "^2.5.3",
     "redux-thunk": "^2.3.0",
     "sass-loader": "^6.0.6",
     "shelljs": "^0.8.3",
@@ -76,6 +78,7 @@
     "webpack": "4.12.1",
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-dev-middleware": "^3.4.0",
-    "webpack-hot-middleware": "^2.24.3"
+    "webpack-hot-middleware": "^2.24.3",
+    "weixin-js-sdk": "^1.4.0-test"
   }
 }
