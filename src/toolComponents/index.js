@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import { withRouter } from "react-router-dom";
 import dwechat from 'utils/dwechat';
-import {toast} from 'utils/tools';
+import {Toast} from 'utils/tools';
 
 class PageWarp extends Component {
     componentDidMount () {
         dwechat.isUserLogin().then(weixin_json => {
-            console.log(`${weixin_json.nickname} 登录成功~`)
-            console.log(toast)
-            toast(`${weixin_json.nickname} 登录成功~`)
             this.props.history.push('/');
+            Toast.info(`${weixin_json.nickname} 登录成功~`)
         }).catch(({step}) => {
             console.log(step);
             // 需要注册

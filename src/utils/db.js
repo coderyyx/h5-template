@@ -1,5 +1,5 @@
 import { Debug } from './index';
-const prefix = 'acmeFD_';
+const prefix = 'h5_template';
 /**
  * 本地存储 examples sessionId centerId extra...
  * tips: sessionStorage 生命周期跟随当前页面；localStorage 跟随当前域名

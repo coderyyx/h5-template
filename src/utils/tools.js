@@ -1,5 +1,6 @@
+import React from 'react';
 import {Db} from './index';
-export {toast} from 'react-mobile-message';
+export { Toast } from 'antd-mobile';
 const setTimeout = window.setTimeout
 
 const {NODE_ENV, isProd} = process.env
