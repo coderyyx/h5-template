@@ -3,8 +3,9 @@ import dtop from "./dtop.js";
 import wx from "weixin-js-sdk";
 import {toast} from 'react-mobile-message';
 import Config from './info.js';
-
+const redirect_uri = Config.redirect_uri;
 const appId = Config.appId;  //wx1c1fa5d121654c89
+
 let dwechat = {
     Params : function(){
         // let params = location.search.slice(1);
@@ -39,8 +40,8 @@ let dwechat = {
                         reject();
                     }
                     else{//授权
-                        var url = location.href.split('#')[0];
-                        location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ appId +'&redirect_uri='+ encodeURIComponent(url) +'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+                        // var url = location.href.split('#')[0];
+                        location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ appId +'&redirect_uri='+ encodeURIComponent(redirect_uri) +'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
                         return false;
                     }
                 },
@@ -72,6 +73,8 @@ let dwechat = {
                     authCode : param.code
                 },
                 success : function(data){
+                    console.log('isUserLogin=========>');
+                    console.log(data)
                     let online = data.online;
                     if(online == 1){ //已登录
                         resolve();
@@ -89,8 +92,9 @@ let dwechat = {
                         });
                     }
                     else if(online == 0){//授权
-                        var url = location.href.split('#')[0];
-                        location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ appId +'&redirect_uri='+ encodeURIComponent(url) +'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+                        alert(JSON.stringify(data))
+                        // var url = location.href.split('#')[0];
+                        location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ appId +'&redirect_uri='+ encodeURIComponent(redirect_uri) +'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
                         return false;
                     }
                 },

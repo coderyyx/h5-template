@@ -4,6 +4,8 @@ if(typeof String.prototype.trim === 'undefined'){
     };
 }
 import Config from './info.js';
+const redirect_uri = Config.redirect_uri;
+
 const ktopUtils = {
     hostname : function(){
         //暂时固定写死
@@ -195,12 +197,12 @@ const ktop = {
         if(!api){
             return;
         }
-        var apiarr = api.split('/');
+        var [handler, method] = api.split('/');
         var paramdata = {
             'body' : data,
             'header' : {
-                "handler" : apiarr[0],
-                "method" : apiarr[1],
+                "handler" : handler,
+                "method" : method,
                 "platform" : "weixin",
                 "version" : "0.0.1"
             }
@@ -225,8 +227,8 @@ const ktop = {
                         success && success(data);
                     }
                     else if(code == 2000){ //登录
-                        var cururl = location.href.split('#')[0];
-                        location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ Config.appId +'&redirect_uri='+ encodeURIComponent(cururl) +'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+                        // var cururl = location.href.split('#')[0];
+                        location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ Config.appId +'&redirect_uri='+ encodeURIComponent(redirect_uri) +'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
                         return;
                     }
                     else{
@@ -239,7 +241,6 @@ const ktop = {
                 }
             },
             error : function(){
-                //console.log(result);
                 error && error({
                     msg : '网络请求失败，请稍后重试'
                 });
