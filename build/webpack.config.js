@@ -8,6 +8,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+var vConsolePlugin = require('vconsole-webpack-plugin'); 
 // tool module
 const helper = require('./helper')
 const {
@@ -149,6 +150,10 @@ let webpackConfig = {
       } : {},
       filename: `index.html`,
       template: helper.assetsPath(`template/template.html`)
+    }),
+    new vConsolePlugin({
+        filter: [],  // 需要过滤的入口文件
+        enable: true // 发布代码前记得改回 false
     }),
     // new AddAssetHtmlPlugin(Object.assign({
     //   filepath: helper.assetsPath('public/src/plugin/moment.js'),

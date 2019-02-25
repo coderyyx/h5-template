@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=development BABEL_ENV=development node ./build/server.js",
-    "build": "cross-env NODE_ENV=production BABEL_ENV=production node ./build/bundle.js"
+    "build": "cross-env NODE_ENV=production BABEL_ENV=production node ./build/bundle.js",
+    "report": "cross-env REPORT=true npm run build"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -75,6 +76,7 @@
     "style-loader": "^0.18.2",
     "uglifyjs-webpack-plugin": "^1.2.6",
     "url-loader": "^1.0.1",
+    "vconsole-webpack-plugin": "^1.4.2",
     "webpack": "4.12.1",
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-dev-middleware": "^3.4.0",
