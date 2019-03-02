@@ -1,17 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch, BrowserRouter } from "react-router-dom";
 import PageWarp from 'toolComponents';
-import App from './app';
-import LessonDetails from './page/lessonDetails';
-import Register from './page/minePage/register';
+import dynamic from 'utils/dynamic';
 
-export default () => <HashRouter>
+const routeConfig = [
+    {
+        path: '/',
+        component: () => import('./app')
+    },
+    {
+        path: '/lessonDetails',
+        component: () => import('./page/lessonDetails')
+    },
+    {
+        path: '/register',
+        component: () => import('./page/minePage/register')
+    }
+]
+export default () => <BrowserRouter>
     <PageWarp>
         <Switch>
-            <Route path="/" exact component={App}/>
-            <Route path="/lessonDetails" component={LessonDetails}/>
-            <Route path="/register" component={Register}/>
+            {
+                routeConfig.map(({path, component}) => <Route path = {path} exact = {path === '/'} component = {dynamic({component})}/>)
+            }
         </Switch>
   </PageWarp>
-</HashRouter>
+</BrowserRouter>

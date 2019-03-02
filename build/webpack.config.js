@@ -151,10 +151,6 @@ let webpackConfig = {
       filename: `index.html`,
       template: helper.assetsPath(`template/template.html`)
     }),
-    new vConsolePlugin({
-        filter: [],  // 需要过滤的入口文件
-        enable: true // 发布代码前记得改回 false
-    }),
     // new AddAssetHtmlPlugin(Object.assign({
     //   filepath: helper.assetsPath('public/src/plugin/moment.js'),
     //   //  require.resolve('../public/src/plugin/moment.js'),
@@ -187,6 +183,12 @@ let webpackConfig = {
 
 isReport && webpackConfig.plugins.push(new BundleAnalyzerPlugin({generateStatsFile: true}))
 // 输出gzip文件
+!isProd && webpackConfig.plugins.push(
+  new vConsolePlugin({
+      filter: [],  // 需要过滤的入口文件
+      enable: true // 发布代码前记得改回 false
+  }))
+
 isGzip && webpackConfig.plugins.push(
   new CompressionPlugin({
     test: /\.js(\?.*)?$/i,

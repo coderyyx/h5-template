@@ -1,46 +1,55 @@
 import React from 'react';
-import { List, InputItem, WhiteSpace } from 'antd-mobile';
+import { List, Button, InputItem, WhiteSpace, Toast } from 'antd-mobile';
 import { createForm } from 'rc-form';
 
 class BasicInputExample extends React.Component {
+  state = {
+    isRegisterting: false,
+  }
   componentDidMount() {
     // this.autoFocusInst.focus();
   }
-  handleClick = () => {
-    this.inputRef.focus();
+  register = () => {
+    this.setState({isRegisterting: true});
+    this.props.form.validateFields((error, value) => {
+      console.log(error, value);
+      if (!error) {
+        Toast.show('注册成功~')
+        setTimeout(() => {
+          this.props.history.push('/');
+        }, 1000)
+      }
+      // this.setState({isRegisterting: false});
+      
+    });
   }
   render() {
     const { getFieldProps } = this.props.form;
     return (
       <div>
-        <List renderHeader={() => 'Format'}>
+        <List renderHeader={() => '用户注册'}>
           <InputItem
-            {...getFieldProps('bankCard', {
-              initialValue: '8888 8888 8888 8888',
-            })}
-            type="bankCard"
-          >银行卡</InputItem>
+            {...getFieldProps('username', {
+              rules: [{required: true}],
+              })
+            }
+            placeholder="请输入用户名"
+          >用户名：</InputItem>
           <InputItem
-            {...getFieldProps('phone')}
-            type="phone"
-            placeholder="186 1234 1234"
-          >手机号码</InputItem>
-          <InputItem
-            {...getFieldProps('password')}
+            {...getFieldProps('password', {
+              rules: [{required: true}],
+              })}
             type="password"
-            placeholder="****"
-          >密码</InputItem>
+            placeholder="请输入密码"
+          >密码：</InputItem>
+          
           <InputItem
-            {...getFieldProps('number')}
-            type="number"
-            placeholder="click to show number keyboard"
-          >数字键盘</InputItem>
-          <InputItem
-            {...getFieldProps('digit')}
-            type="digit"
-            placeholder="click to show native number keyboard"
-          >数字键盘</InputItem>
+            {...getFieldProps('password_again')}
+            type="password"
+            placeholder="请确认输入密码"
+          >确认密码：</InputItem>
         </List>
+        <Button type="primary" onClick={this.register} loading= {this.state.isRegisterting}>注册</Button>
       </div>
     );
   }

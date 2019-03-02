@@ -5,16 +5,16 @@ import {Toast} from 'utils/tools';
 
 class PageWarp extends Component {
     componentDidMount () {
-        dwechat.isUserLogin().then(weixin_json => {
-            this.props.history.push('/');
-            Toast.info(`${weixin_json.nickname} 登录成功~`)
-        }).catch(({step}) => {
-            console.log(step);
-            // 需要注册
-            if (step === 0) {
-                this.props.history.push('/register');
-            }
-        })
+        // dwechat.isUserLogin().then(weixin_json => {
+        //     this.props.history.push('/');
+        //     Toast.info(`${weixin_json.nickname} 登录成功~`)
+        // }).catch(({step}) => {
+        //     console.log(step);
+        //     // 需要注册
+        //     if (step === 0) {
+        //         this.props.history.push('/register');
+        //     }
+        // })
     }
     render () {
         console.log('pageWarp render====>')
