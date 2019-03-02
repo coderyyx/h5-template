@@ -17,7 +17,8 @@ const getOutput = () => {
     path: assetsPath('dist/'),
     filename: '[name].js',
     chunkFilename: '[name].chunk.js',
-    publicPath: isProd ? '/dist/' : '/',
+    // publicPath: isProd ? '/dist/' : '/',
+    publicPath: '/'
   }, isProd ? {
     filename: 'js/[name].[hash:7].js',
     chunkFilename: 'js/[name].chunk.[chunkhash:7].js'

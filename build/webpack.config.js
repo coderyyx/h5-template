@@ -39,6 +39,7 @@ let webpackConfig = {
     }
   },
   externals: {
+    // 'antd-mobile': 'antd-mobile'
   },
   module: {
     rules: [
@@ -152,7 +153,7 @@ let webpackConfig = {
       template: helper.assetsPath(`template/template.html`)
     }),
     // new AddAssetHtmlPlugin(Object.assign({
-    //   filepath: helper.assetsPath('public/src/plugin/moment.js'),
+    //   filepath: helper.assetsPath('node_modules/antd-mobile/dist/antd-mobile.js'),
     //   //  require.resolve('../public/src/plugin/moment.js'),
     //   outputPath: '/js',
     //   publicPath: '/js/',

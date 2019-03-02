@@ -5,7 +5,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development BABEL_ENV=development node ./build/server.js",
     "build": "cross-env NODE_ENV=production BABEL_ENV=production node ./build/bundle.js",
-    "report": "cross-env REPORT=true npm run build"
+    "report": "cross-env REPORT=true npm run build",
+    "static": "cross-env PORT=8000 node ./build/staticServer.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
