@@ -39,20 +39,19 @@ let webpackConfig = {
     }
   },
   externals: {
-    // 'antd-mobile': 'antd-mobile'
   },
   module: {
     rules: [
-      // {
-      //   test: /\.(js)$/,
-      //   enforce: 'pre',
-      //   loader: 'eslint-loader',
-      //   include: [assetsPath('public/src')],
-      //   exclude: [ /node_modules/ ],
-      //   options: {
-      //     formatter: require('eslint-friendly-formatter')
-      //   }
-      // },
+      {
+        test: /\.(js)$/,
+        enforce: 'pre',
+        loader: 'eslint-loader',
+        include: [assetsPath('src')],
+        exclude: [ /node_modules/ ],
+        options: {
+          formatter: require('eslint-friendly-formatter')
+        }
+      },
       {
         test: /\.jsx?$/,
         use: ['babel-loader'],

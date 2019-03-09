@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Routes from './router';
-import dwechat from 'utils/dwechat';
 import 'utils/jssdk';
 import './theme/theme.less';
 

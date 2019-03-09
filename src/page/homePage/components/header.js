@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import { Carousel, WingBlank } from 'antd-mobile';
+import { Carousel } from 'antd-mobile';
 
-class Header extends React.Component {
+class Header extends Component {
   state = {
     data: ['1', '2', '3'],
     imgHeight: 176,

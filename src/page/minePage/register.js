@@ -1,8 +1,13 @@
 import React from 'react';
-import { List, Button, InputItem, WhiteSpace, Toast } from 'antd-mobile';
+import PropTypes from 'prop-types';
+import { List, Button, InputItem, Toast } from 'antd-mobile';
 import { createForm } from 'rc-form';
 
 class BasicInputExample extends React.Component {
+  static propTypes = {
+    form: PropTypes.object,
+    history: PropTypes.object,
+  }
   state = {
     isRegisterting: false,
   }

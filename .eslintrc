@@ -15,7 +15,8 @@
   "globals": {
     "module": true,
     "require": true,
-    "process": true
+    "process": true,
+    "Promise": true
   },
   "rules": {
     "no-console": "off",

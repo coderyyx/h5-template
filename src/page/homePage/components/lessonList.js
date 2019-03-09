@@ -1,6 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class LessonList extends Component {
+    static propTypes = {
+        history: PropTypes.object,
+    }
     state = {
         LessonList: [
             {
@@ -40,7 +44,7 @@ class LessonList extends Component {
             }
         ]
     }
-    lessonClick = (...args) => {
+    lessonClick = () => {
         this.props.history.push('/lessonDetails');
     }
     renderLesson() {

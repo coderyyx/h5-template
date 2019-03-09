@@ -1,0 +1,85 @@
+.lessonDetails__warp{
+    // position: relative;
+    .am-drawer-sidebar{
+        // overflow-y: visible;
+    }
+    .lesson_img{
+        img{
+            width: 100%;
+        }
+    }
+    .ticket__details{
+        position: relative;
+        background: #fff;
+        width: 100%;
+        img{
+            // position: absolute;
+            top: -24px;
+            left: 10px;
+        }
+        .close{
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 15px;
+            padding: 7px;
+        }
+        .activeTypes__button{
+            color: red;
+            border: 1px solid red;
+        }
+        .types{
+            height: 100px;
+            button{
+                margin: 0 5px;
+            }
+        }
+        .buy{
+            height: 40px;
+            line-height: 40px;
+            font-size: 18px;
+            color: white;
+            background: red;
+            text-align: center;
+        }
+    }
+    .toolBar{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+        &::after{
+            content: '';
+            height: 1px;
+            width: 100%;
+            position: absolute;
+            top: 0px;
+            /* color: black; */
+            border-top: 1px solid #cecaca;
+        }
+        .save{
+            background: #fff;
+            color: black;
+            flex: 1;
+            text-align: center;
+            align-self: stretch;
+            line-height: 50px;
+            font-size: 16px;
+        }
+        .bug{
+            position: relative;
+            font-size: 20px;
+            color: white;
+            background: red;
+            flex: 1;
+            text-align: center;
+            align-self: stretch;
+            line-height: 50px;
+        }
+    }
+}
