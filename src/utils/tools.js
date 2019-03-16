@@ -78,18 +78,6 @@ export const isSucc = (resp) => {
   return resp && (resp.code === 200)
 }
 
-export async function asyncImportModule(moduleName) {
-  let _module = null;
-  switch (moduleName) {
-    case 'moment':
-      // _module = await import('moment');
-      break;
-    default:
-      break;
-  }
-   
-  return _module.default || _module
-}
 
 const response = () => {
   alert('session timeout~')

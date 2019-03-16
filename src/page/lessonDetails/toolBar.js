@@ -30,7 +30,7 @@ class ToolBar extends Component {
         return <section className={`ticket__details ${this.state.showTicket ? 'ticket__show': ''}`}>
             <img src="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"/>
             <div className="close" onClick={this.showTicketPanel}>×</div>
-            <div>
+            <div className="price">
                 <span>价格</span>
                 <span>{`${price}￥`}</span>
             </div>

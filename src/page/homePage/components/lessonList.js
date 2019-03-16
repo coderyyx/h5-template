@@ -13,6 +13,7 @@ class LessonList extends Component {
                 subtitle: '副标题',
                 price: 170,
                 numbers: 239,
+                id: 11122
             },
             {
                 _url: 'https://img.yaristyle.com/images/92/2019/01/LZ99Ra7Rp00rzpc0piZyByQiz9VPwE.jpg',
@@ -44,12 +45,12 @@ class LessonList extends Component {
             }
         ]
     }
-    lessonClick = () => {
-        this.props.history.push('/lessonDetails');
+    lessonClick = (id) => {
+        this.props.history.push('/lessonDetails', {id});
     }
     renderLesson() {
-        return this.state.LessonList && this.state.LessonList.map(({_url, title, subtitle, price, numbers}) => {
-            return <li className="lesson_list" key={title} onClick = {() => this.lessonClick(price)}>
+        return this.state.LessonList && this.state.LessonList.map(({_url, title, subtitle, price, numbers, id}) => {
+            return <li className="lesson_list" key={title} onClick = {() => this.lessonClick(id)}>
                 <a className="package">
                     <div className="package__cover-wrap">
                         <div className="package__cover" style={{backgroundImage:`url(${_url})`}}>

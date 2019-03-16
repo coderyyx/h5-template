@@ -247,6 +247,71 @@ const ktop = {
             }
         });
     },
+    promisefyRequest : function(option) {
+        option = option || {};
+        const {api, data, methodType = 'POST'} = option;
+        /* 
+            参数格式
+            {
+                "body":{"authCode":"authCode"},
+                "header":{"handler":"comLogin","method":"isLoginValid","platform":"weixin","version":"0.0.1"}
+            }
+        */
+        if(!api){
+            return;
+        }
+        var [handler, method] = api.split('/');
+        var paramdata = {
+            'body' : data,
+            'header' : {
+                "handler" : handler,
+                "method" : method,
+                "platform" : "weixin",
+                "version" : "0.0.1"
+            }
+        }
+        var dataJson = JSON.stringify(paramdata);
+        var url = ktopUtils.getUrl(option.path);
+        return new Promise((resolve, reject) => {
+            ajax({
+                url : url,
+                contentType : 'text/plain',
+                type : methodType,
+                data : dataJson,
+                xhrFields : {
+                    withCredentials : true
+                },
+                success : function(result){
+                    result = result || {};
+                    try{
+                        var header = result.header;
+                        var code = header.retCode;
+                        var data = result.body || {};
+                        if(code == 1000){
+                            // success && success(data);
+                            resolve(data);
+                        }
+                        else if(code == 2000){ //登录
+                            location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ Config.appId +'&redirect_uri='+ encodeURIComponent(redirect_uri) +'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+                            return;
+                        }
+                        else{
+                            result.msg = header.errorMsg || '请求出错，请返回重试';
+                            // fail && fail(result);
+                            reject(result);
+                        }
+                    }
+                    catch(e){
+                        // fail && fail({msg : e.message});
+                        reject({msg : e.message});
+                    }
+                },
+                error : function(){
+                    reject({msg : '网络请求失败，请稍后重试'});
+                }
+            });
+        })
+    },
     loginRequest : function(option){
         
     }

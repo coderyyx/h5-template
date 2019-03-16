@@ -21,7 +21,7 @@ export default () => <BrowserRouter>
     <PageWarp>
         <Switch>
             {
-                routeConfig.map(({path, component}) => <Route path = {path} exact = {path === '/'} component = {dynamic({component})}/>)
+                routeConfig.map(({path, component}) => <Route path = {path} key={path} exact = {path === '/'} component = {dynamic({component})}/>)
             }
         </Switch>
   </PageWarp>

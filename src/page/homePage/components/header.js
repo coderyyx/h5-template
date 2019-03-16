@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
-
 import { Carousel } from 'antd-mobile';
+import ktop from 'utils/dtop';
 
 class Header extends Component {
   state = {
     data: ['1', '2', '3'],
     imgHeight: 176,
   }
-  componentDidMount() {
+  async initData(){
+    console.log('==========>', this)
+  }
+  async componentDidMount() {
+    this.initData();
     // simulate img loading
     setTimeout(() => {
       this.setState({

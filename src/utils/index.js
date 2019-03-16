@@ -9,7 +9,6 @@ export {
   isSucc,
   isProd,
   CreateActions,
-  asyncImportModule,
 } from './tools'
 
 export {

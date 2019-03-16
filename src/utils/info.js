@@ -6,6 +6,7 @@ const config = {
     testapiurl : 'http://mob.besthinghr.com/',
     // testapiurl : 'http://m.besthinghr.com/',
     redirect_uri: 'http://m.besthinghr.com/dist/',
+    // redirect_uri: 'http://192.168.0.196:4004/'
 }
 
 export default config;

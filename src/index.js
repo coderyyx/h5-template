@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Routes from './router';
 import 'utils/jssdk';
 import './theme/theme.less';
+require("@babel/polyfill");
 
 // Loading hasn't finished yet
 function loadedHandler() {

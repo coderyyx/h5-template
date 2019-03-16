@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Tabs, WhiteSpace, Badge } from 'antd-mobile';
 import ToolBar from './toolBar';
 import './index.less';
 
 class Index extends Component {
+    static propTypes = {
+        location: PropTypes.object,
+    }
     tabs = [
         { title: <Badge>详情</Badge> },
         { title: <Badge dot>评价</Badge> },
@@ -14,8 +18,12 @@ class Index extends Component {
     renderComments() {
         return <div>评价</div>
     }
+    componentDidMount() {
+        const history__args = this.props.location.state;
+        console.log(history__args)
+
+    }
     render () {
-        console.log(this.props)
         return (
             <div className="lessonDetails__warp">
                 <section className="lesson_img">
@@ -26,12 +34,6 @@ class Index extends Component {
                     onChange={(tab, index) => { console.log('onChange', index, tab); }}
                     onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
                     >
-                    {/* <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-                        Content of first tab
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-                        Content of second tab
-                    </div> */}
                     {
                         this.renderDetails()
                     }

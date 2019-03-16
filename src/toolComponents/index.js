@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { withRouter } from "react-router-dom";
-// import dwechat from 'utils/dwechat';
-// import {Toast} from 'utils/tools';
+import dwechat from 'utils/dwechat';
+import {Toast} from 'utils/tools';
 
 class PageWarp extends Component {
     static propTypes = {
         children: PropTypes.any,
+        location: PropTypes.object,
+        history: PropTypes.object,
     }
     componentDidMount () {
         // dwechat.isUserLogin().then(weixin_json => {
