@@ -4,20 +4,24 @@ import ktop from 'utils/dtop';
 
 class Header extends Component {
   state = {
-    data: ['1', '2', '3'],
+    bannerList: null,
     imgHeight: 176,
   }
   async initData(){
-    console.log('==========>', this)
+    try {
+      const resp = await ktop.promisefyRequest({
+        api: 'eduHandler/bannerList',
+        data: {},
+      });
+      if (resp.banners && resp.banners.length) {
+        this.setState({bannerList: resp.banners})
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
   async componentDidMount() {
     this.initData();
-    // simulate img loading
-    setTimeout(() => {
-      this.setState({
-        data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
-      });
-    }, 100);
   }
   render() {
     return (
@@ -25,17 +29,15 @@ class Header extends Component {
         <Carousel
           autoplay={true}
           infinite
-          // beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-          // afterChange={index => console.log('slide to', index)}
         >
-          {this.state.data.map(val => (
+          {this.state.bannerList && this.state.bannerList.map((banner, index) => (
             <a
-              key={val}
+              key={index}
               href="http://www.alipay.com"
               style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
             >
               <img
-                src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
+                src={`${banner.uri}`}
                 alt=""
                 style={{ width: '100%', verticalAlign: 'top' }}
                 onLoad={() => {

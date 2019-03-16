@@ -15,7 +15,8 @@ const ktopUtils = {
             url = Config.apiurl;
         }
         else{
-            url = Config.testapiurl;
+            // url = Config.testapiurl;
+            url = Config.apiurl;
         }
         return url;
     }(),
@@ -282,6 +283,8 @@ const ktop = {
                     withCredentials : true
                 },
                 success : function(result){
+                    console.log('request url success===========>', url, api);
+                    console.log('response data success===============>', result.body);
                     result = result || {};
                     try{
                         var header = result.header;
