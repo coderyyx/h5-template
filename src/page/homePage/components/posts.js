@@ -1,32 +1,44 @@
 import React, { Component } from 'react'
-import {Carousel} from 'antd-mobile'
+import {Carousel} from 'antd-mobile';
+import ktop from 'utils/dtop';
 
 class Posts extends Component {
     state = {
-        posts: [
-            '最近绘画班成功展示',
-            '绘画班有上新哦~'
-        ]
+        noticeList: [{title: 1},{title: 2}]
+    }
+    async initData(){
+      try {
+        const resp = await ktop.promisefyRequest({
+          api: 'eduHandler/noticeList',
+          data: {},
+        });
+        if (resp.notices && resp.notices.length) {
+          this.setState({noticeList: resp.notices})
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    async componentDidMount() {
+      this.initData();
     }
     renderCarousel() {
-        return <Carousel className="my-carousel"
-        vertical
-        dots={false}
-        dragging={false}
-        swiping={false}
-        autoplay
-        infinite
-        >
-        {
-            this.state.posts.map(titles => <div className="v-item" key={titles}>{titles}</div>)
-        }
-    </Carousel>
+        return this.state.noticeList && this.state.noticeList.map(notice => <div className="v-item" key={notice.title}>{notice.title}</div>)
     }
     render () {
         return (
             <div className="post-container">
                 <i className="iconfont icon-info-copy"></i>
-                {this.renderCarousel()}
+                <Carousel className="my-carousel"
+                    vertical
+                    dots={false}
+                    dragging={false}
+                    swiping={false}
+                    autoplay
+                    infinite
+                    >
+                    {this.renderCarousel()}
+                    </Carousel>
             </div>
         )
     }

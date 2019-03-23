@@ -4,7 +4,7 @@ import ktop from 'utils/dtop';
 
 class Header extends Component {
   state = {
-    bannerList: null,
+    bannerList: [{uri: '1'},{uri: '2'}],
     imgHeight: 176,
   }
   async initData(){

@@ -19,7 +19,7 @@ class Home extends Component {
         return (
             <Fragment>
                 <Header/>
-                <Nav/>
+                <Nav history={this.props.history}/>
                 <Posts/>
                 <LessonList history={this.props.history}/>
             </Fragment>

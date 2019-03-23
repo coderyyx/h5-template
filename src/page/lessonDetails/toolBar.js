@@ -38,8 +38,8 @@ class ToolBar extends Component {
                 <span>规格</span>
                 <span>
                 {
-                    typesList && typesList.map(element => {
-                        return <button size="small" className={types === element.value ? 'activeTypes__button' : ''} onClick={() => this.chooseTypes(element)}>{element.label}</button>
+                    typesList && typesList.map((element, index) => {
+                        return <button size="small" key={index} className={types === element.value ? 'activeTypes__button' : ''} onClick={() => this.chooseTypes(element)}>{element.label}</button>
                     })
                 }
                 </span>

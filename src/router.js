@@ -15,6 +15,10 @@ const routeConfig = [
     {
         path: '/register',
         component: () => import('./page/minePage/register')
+    },
+    {
+        path: '/productTypes',
+        component: () => import('./page/productTypes/index')
     }
 ]
 export default () => <BrowserRouter>
