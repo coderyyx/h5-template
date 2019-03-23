@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Tabs, WhiteSpace, Badge, Toast, Card } from 'antd-mobile';
 import ToolBar from './toolBar';
 import ktop from 'utils/dtop';
+import VideoPlay from './video';
+// import videojs from 'video.js';
 import './index.less';
 
 class Index extends Component {
@@ -13,19 +15,20 @@ class Index extends Component {
         tabs: [
             { title: <Badge>详情</Badge> },
             { title: <Badge dot>评价(0)</Badge> },
-        ]
+        ],
+        lessonDetails: null,
 
     }
     async initData(id){
         try {
             const resp = await ktop.promisefyRequest({
-            api: 'eduHandler/itemCommentList',
+            api: 'eduHandler/itemDetail',
             data: {"itemId": id},
             });
-            if (resp.palps && resp.palps.length) {
-                this.setState({LessonList: resp.palps})
-            }
+            resp && this.setState({lessonDetails: resp});
+            console.log('resp===========>', resp)
         } catch (error) {
+            console.log('error', error)
             Toast.info(error);
         }
     }
@@ -34,7 +37,22 @@ class Index extends Component {
         console.log('---->', this.props.location.state)
         this.initData(id);
     }
-    renderDetails() {
+    videoControl() {
+        var options = {};
+ 
+        // var player = videojs('my-player', options, function onPlayerReady() {
+        //     videojs.log('Your player is ready!');
+            
+        //     // In this context, `this` is the player that was created by Video.js.
+        //     this.play();
+            
+        //     // How about an event listener?
+        //     this.on('ended', function() {
+        //         videojs.log('Awww...over so soon?!');
+        //     });
+        // });
+    }
+    renderDetails({title, name}) {
         return <Fragment>
             <Card>
         <Card.Header
@@ -42,7 +60,8 @@ class Index extends Component {
           thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
         />
         <Card.Body>
-          <div>课程名称：---------------</div>
+          <div>课程名称：{`${title} - ${name}`}</div>
+          <VideoPlay/>
         </Card.Body>
       </Card>
       <Card>
@@ -69,6 +88,7 @@ class Index extends Component {
         return <div>评价(0)</div>
     }
     render () {
+        const {lessonDetails} = this.state;
         return (
             <div className="lessonDetails__warp">
                 <section className="lesson_img">
@@ -80,7 +100,7 @@ class Index extends Component {
                     onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
                     >
                     {
-                        this.renderDetails()
+                        this.renderDetails(lessonDetails || {})
                     }
                     {
                         this.renderComments()

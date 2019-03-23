@@ -301,7 +301,7 @@ const ktop = {
                         else{
                             result.msg = header.errorMsg || '请求出错，请返回重试';
                             // fail && fail(result);
-                            reject(result);
+                            reject(result.msg);
                         }
                     }
                     catch(e){
